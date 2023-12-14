@@ -18,8 +18,11 @@ jobs:
     - name: Update apt repositories
       run: sudo apt update
 
-    - name: Install Ansible
+    - name: Install Boto3
       run: pip install boto3
+
+    - name: Install Ansible
+      run: pip install ansible
 
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v4
@@ -28,11 +31,11 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1  # Set your AWS region
 
-    - name: Install Ansible
-      run: sudo apt install -y ansible
+    # - name: Install Ansible
+    #   run: sudo apt install -y ansible
 
-    - name: Verify Ansible installation
-      run: ansible --version
+    # - name: Verify Ansible installation
+    #   run: ansible --version
 
     - name: list servers
       run: ansible-inventory --graph -i aws_ec2.yml
