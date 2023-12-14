@@ -1,6 +1,8 @@
 ---
 - hosts: all
   become: yes
+  remote_user: ubuntu
+
   tasks:
   - name: Install Nginx
     apt:
