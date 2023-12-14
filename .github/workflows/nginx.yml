@@ -10,16 +10,16 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    # - name: Set up Python
-    #   uses: actions/setup-python@v2
-    #   with:
-    #     python-version: '3.x'
-
-    # - name: Install Ansible
-    #   run: pip install ansible
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
 
     - name: Update apt repositories
       run: sudo apt update
+
+    - name: Install Ansible
+      run: pip install boto3
 
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v4
