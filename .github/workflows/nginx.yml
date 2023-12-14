@@ -18,6 +18,11 @@ jobs:
     - name: Install Ansible
       run: pip install ansible
 
+    - name: print ssh key
+      run: echo "$PRIVATE_KEY"
+      env:
+        PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+
     - name: Run Ansible Playbook
       run: ansible-playbook -i aws_ec2.yml nginx.yml -u ubuntu --private-key <(echo "$PRIVATE_KEY")
       env:
