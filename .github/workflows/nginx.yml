@@ -22,3 +22,4 @@ jobs:
       run: ansible-playbook -i aws_ec2.yml nginx.yml -u ubuntu --private-key <(echo "$PRIVATE_KEY")
       env:
         PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+        ANSIBLE_HOST_KEY_CHECKING: False
