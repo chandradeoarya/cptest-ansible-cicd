@@ -34,13 +34,14 @@ jobs:
 
     - name: Set up SSH
       run: |
+        mkdir ~/.ssh
         echo "$PRIVATE_KEY" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
       env:
         PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
 
     - name: Run Ansible Playbook
-      run: ansible-playbook -i aws_ec2.yml nginx.yml -u ubuntu
+      run: ansible-playbook -i aws_ec2.yml nginx.yml
       env:
         PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
         ANSIBLE_HOST_KEY_CHECKING: False
