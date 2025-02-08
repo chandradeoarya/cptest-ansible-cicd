@@ -3,4 +3,4 @@ regions:
   - us-east-1
 filters:
   tag:team:
-    - cp
+    - fire
